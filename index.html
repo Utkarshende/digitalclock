@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <title>
+            Digital Clock
+        </title>
+        <style>
+            .body-1{
+                display: flex;
+                justify-content: center;
+                margin-top:-700px;
+                font-size: 80px;
+                color: rgb(74, 255, 24);
+                font-family: 'Courier New', Courier, monospace;
+                  
+            }
+            .body-2{
+                 display: flex;
+                justify-content: center;
+                margin-top:100px;
+                font-size: 170px;
+                color: rgb(74, 255, 24);
+                font-family: 'Courier New', Courier, monospace;
+                
+            }
+            .videoedit{  
+                min-width: 100%;
+                min-height: 100%;       
+            } 
+        </style>
+    </head>
+    <body >
+
+<video autoplay muted loop class="videoedit">
+  <source src="./3130284-hd_1280_720_30fps.mp4" type="video/mp4">
+</video>
+<div>
+        <div class="body-1">
+            <span style="text-decoration: 1px overline;">
+                Date
+            </span>
+            <span style="color: red;">
+                |
+            </span>
+<div id="todaysdate">
+    
+</div>
+<div>
+    :
+</div>
+<div id="month">
+    
+</div>
+<div>
+    :
+</div>
+<div id="year">
+    
+</div>
+</div>
+<div class="body-2">
+
+             <div id="hours">
+             
+            </div>
+            <div >
+                :
+            </div>
+            <div id="minutes">
+                
+            </div>
+             <div>
+                :
+            </div> 
+            <div id="seconds">
+                
+            </div>
+            <span style="color: red;">|</span>
+            <div id="ampm">
+                
+            </div>
+                
+</div>
+        </div>
+         
+        <script>
+            function loadClock(){
+                const dateElement=document.getElementById("date");
+                const todaysdateElement=document.getElementById("todaysdate");
+                const monthElement=document.getElementById("month");
+                const yearElement=document.getElementById("year");
+                const hourElement=document.getElementById("hours");
+                 const minuteElement=document.getElementById("minutes"); 
+                 const secondElement=document.getElementById("seconds");
+                 const ampmElement=document.getElementById("ampm");
+                
+
+                 const date= new Date();
+
+                 let todaysdate=date.getDate();
+
+                 todaysdate=todaysdate<10 ? "0"+todaysdate : todaysdate;
+
+
+
+
+                 
+
+                 let month=date.getMonth();
+                 month=month<10 ? "0"+month : month;
+               
+
+                  let year=date.getFullYear();
+
+                  let hours= date.getHours(); 
+
+                  hours = hours > 12 ? hours - 12 : hours;
+                  hours=hours < 10 ? "0"+hours : hours;
+                  let minutes= date.getMinutes(); 
+                  minutes = minutes < 10 ? "0"+minutes : minutes;
+
+                  let seconds= date.getSeconds(); 
+                seconds=seconds < 10 ? "0"+seconds : seconds ;
+
+                  let ampm= hours>12 ? "AM" : "PM";
+
+                  hourElement.innerHTML=hours;
+
+                   minuteElement.innerHTML=minutes;
+
+                    secondElement.innerHTML=seconds;
+
+                    ampmElement.innerHTML=ampm;
+                   
+                    todaysdateElement.innerHTML=todaysdate;
+
+                    monthElement.innerHTML=month;
+
+                    yearElement.innerHTML=year;
+                   
+
+            }
+            setInterval(loadClock,1000);
+            </script>
+    </body>
+</html>
